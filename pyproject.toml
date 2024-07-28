@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "async_repo_sync"
+version = "0.1.0"
+description = "Gitea dowmlader"
+authors = ["Liliya Pavliy <pliliya111@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aiohttp = "^3.9.5"
+aiofiles = "^24.1.0"
+gitpython = "^3.1.43"
+
+[tool.pytest.ini_options]
+testpaths = [ "tests",]
+python_files = "test*.py"
+addopts = "-rsxX -l --tb=short --strict-markers --doctest-modules"
+xfail_strict = "true"
+markers = [
+    "asyncio: mark a test as asyncio"
+]
+
+[tool.poetry.group.dev.dependencies]
+wemake-python-styleguide = "^0.18.0"
+flake8-spellcheck = "^0.28.0"
+isort = "^5.7.0"
+flake8-pytest-style = "^1.7.2"
+flake8-annotations = "^3.0.1"
+flake8-logging-format = "^0.9.0"
+nitpick = "^0.35.0"
+pytest-asyncio = "^0.23.8"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pytest-sugar = "^0.9.7"
+Faker = "^20.1.0"
+pytest-snapshot = "^0.9.0"
+
+[tool.poetry.group.test.dependencies.pytest-xdist]
+extras = [ "psutil",]
+version = "^3.5.0"
+
+[tool.nitpick]
+style = [
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/all.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/darglint.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/editorconfig.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/file-structure.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/flake8.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/isort.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/pytest.toml",
+  "https://gitea.radium.group/radium/project-configuration/raw/branch/master/nitpick/styleguide.toml",
+]
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+use_parentheses = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
